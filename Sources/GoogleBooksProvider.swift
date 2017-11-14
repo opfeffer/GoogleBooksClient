@@ -19,7 +19,7 @@ public struct GoogleBooksProvider {
         provider = MoyaProvider(plugins: plugins)
     }
 
-    public func search(query: String, projection: Projection = .lite, printTypes: PrintTypes = .all, sorting: Sorting = .relevance, pagination: Pagination = (0, 10), completion: @escaping (Result<VolumeList, MoyaError>) -> Void) -> Cancellable {
+    public func search(query: String, projection: Projection = .lite, printTypes: PrintTypes = .all, sorting: Sorting = .relevance, pagination: Pagination = (0, 10), completion: @escaping (Result<VolumesList, MoyaError>) -> Void) -> Cancellable {
         let target = GoogleBooksAPI.search(query: query,
                                            projection: projection,
                                            printTypes: printTypes,
@@ -34,7 +34,7 @@ public struct GoogleBooksProvider {
 
             case .success(let response):
                 do {
-                    let list = try response.map(VolumeList.self)
+                    let list = try response.map(VolumesList.self)
                     completion(.success(list))
 
                 } catch {

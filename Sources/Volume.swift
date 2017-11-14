@@ -13,6 +13,58 @@ public enum PrintType: String, Decodable {
     case magazine   = "MAGAZINE"
 }
 
+/// Google Books appears to return varying date formats in its `volumes` response.
+/// `PublishDate` attempts to standardize the formats and provide a single view of the data.
+public enum PublishDate {
+    case year(Int)
+    case date(Date)
+}
+
+extension PublishDate: Decodable {
+
+    public static let dateFormatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "YYYY-MM-DD"
+        return fmt
+    }()
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let raw = try container.decode(String.self)
+
+        if let date = type(of: self).dateFormatter.date(from: raw) {
+            self = .date(date)
+
+        } else if let year = Int(raw) {
+            self = .year(year)
+
+        } else {
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Unsupported date format.")
+        }
+    }
+
+}
+
+public extension PublishDate {
+
+    public static let defaultFormatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .medium
+        return fmt
+    }()
+
+    func string(using formatter: DateFormatter = PublishDate.defaultFormatter) -> String {
+        switch self {
+        case .year(let year):
+            return "\(year)"
+
+        case .date(let date):
+            return formatter.string(from: date)
+
+        }
+    }
+}
+
 /// A Volume represents information that Google Books hosts about a book or a magazine.
 /// It contains metadata, such as title and author, as well as personalized data,
 /// such as whether or not it has been purchased.
@@ -28,7 +80,7 @@ public struct Volume: Decodable {
         public let authors: [String]
 
         public let description: String
-//        public let printType: PrintType
+        public let publishDate: PublishDate
 
         public let imageURLs: ImageURLs
         public let infoURL: URL
@@ -38,7 +90,7 @@ public struct Volume: Decodable {
             case title
             case authors
             case description
-//            case printType
+            case publishDate    = "publishedDate"
             case imageURLs      = "imageLinks"
             case infoURL        = "infoLink"
             case previewURL     = "previewLink"
@@ -57,9 +109,8 @@ public struct Volume: Decodable {
     }
 }
 
-public struct VolumeList: Decodable {
-    public let kind: String
-    public let totalItems: Int
+public struct VolumesList: Decodable {
 
     public let items: [Volume]
+    public let totalItems: Int
 }
