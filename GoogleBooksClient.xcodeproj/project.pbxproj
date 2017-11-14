@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F073ABC1FBA833000B43DE1 /* GoogleBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABB1FBA833000B43DE1 /* GoogleBooksProvider.swift */; };
+		4F073ABE1FBA8BA500B43DE1 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABD1FBA8BA500B43DE1 /* Volume.swift */; };
+		4F073AC01FBA8F3200B43DE1 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABF1FBA8F3200B43DE1 /* Parameters.swift */; };
 		4F681F231FBA77A20010D00C /* GoogleBooksClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F191FBA77A20010D00C /* GoogleBooksClient.framework */; };
-		4F681F281FBA77A20010D00C /* GoogleBooksClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F271FBA77A20010D00C /* GoogleBooksClientTests.swift */; };
+		4F681F281FBA77A20010D00C /* BooksClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F271FBA77A20010D00C /* BooksClientTests.swift */; };
 		4F681F361FBA77EF0010D00C /* GoogleBooksClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F681F341FBA77EF0010D00C /* GoogleBooksClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F681F3E1FBA7A1C0010D00C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F3B1FBA7A1C0010D00C /* Moya.framework */; };
 		4F681F3F1FBA7A1C0010D00C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F3C1FBA7A1C0010D00C /* Alamofire.framework */; };
 		4F681F401FBA7A1C0010D00C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F3D1FBA7A1C0010D00C /* Result.framework */; };
-		4F681F421FBA7AE40010D00C /* BooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F411FBA7AE40010D00C /* BooksService.swift */; };
-		4F681F451FBA7C010010D00C /* Foundation+GoogleBooksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F441FBA7C010010D00C /* Foundation+GoogleBooksClient.swift */; };
+		4F681F421FBA7AE40010D00C /* GoogleBooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F411FBA7AE40010D00C /* GoogleBooksAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +30,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F073ABB1FBA833000B43DE1 /* GoogleBooksProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksProvider.swift; sourceTree = "<group>"; };
+		4F073ABD1FBA8BA500B43DE1 /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
+		4F073ABF1FBA8F3200B43DE1 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
+		4F073AC11FBA972F00B43DE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4F073AC31FBA99DD00B43DE1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		4F13C2381FBAA8C500F77AD5 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4F681F191FBA77A20010D00C /* GoogleBooksClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleBooksClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F681F221FBA77A20010D00C /* GoogleBooksClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleBooksClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F681F271FBA77A20010D00C /* GoogleBooksClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksClientTests.swift; sourceTree = "<group>"; };
+		4F681F271FBA77A20010D00C /* BooksClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksClientTests.swift; sourceTree = "<group>"; };
 		4F681F291FBA77A20010D00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F681F341FBA77EF0010D00C /* GoogleBooksClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleBooksClient.h; sourceTree = "<group>"; };
 		4F681F351FBA77EF0010D00C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,8 +46,7 @@
 		4F681F3B1FBA7A1C0010D00C /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		4F681F3C1FBA7A1C0010D00C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		4F681F3D1FBA7A1C0010D00C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
-		4F681F411FBA7AE40010D00C /* BooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksService.swift; sourceTree = "<group>"; };
-		4F681F441FBA7C010010D00C /* Foundation+GoogleBooksClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+GoogleBooksClient.swift"; sourceTree = "<group>"; };
+		4F681F411FBA7AE40010D00C /* GoogleBooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				4F681F331FBA77EF0010D00C /* Sources */,
-				4F681F261FBA77A20010D00C /* GoogleBooksClientTests */,
+				4F681F261FBA77A20010D00C /* Tests */,
 				4F681F391FBA785F0010D00C /* ... */,
 				4F681F1A1FBA77A20010D00C /* Products */,
 				4F681F3A1FBA7A1C0010D00C /* Frameworks */,
@@ -84,21 +91,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F681F261FBA77A20010D00C /* GoogleBooksClientTests */ = {
+		4F681F261FBA77A20010D00C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4F681F271FBA77A20010D00C /* GoogleBooksClientTests.swift */,
+				4F681F271FBA77A20010D00C /* BooksClientTests.swift */,
 				4F681F291FBA77A20010D00C /* Info.plist */,
 			);
-			path = GoogleBooksClientTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		4F681F331FBA77EF0010D00C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4F681F411FBA7AE40010D00C /* BooksService.swift */,
+				4F073ABB1FBA833000B43DE1 /* GoogleBooksProvider.swift */,
+				4F681F411FBA7AE40010D00C /* GoogleBooksAPI.swift */,
+				4F073ABF1FBA8F3200B43DE1 /* Parameters.swift */,
+				4F073ABD1FBA8BA500B43DE1 /* Volume.swift */,
 				4F681F431FBA7BDA0010D00C /* Supporting Files */,
-				4F681F441FBA7C010010D00C /* Foundation+GoogleBooksClient.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -106,7 +115,10 @@
 		4F681F391FBA785F0010D00C /* ... */ = {
 			isa = PBXGroup;
 			children = (
+				4F073AC31FBA99DD00B43DE1 /* .swiftlint.yml */,
 				4F681F381FBA785A0010D00C /* Cartfile */,
+				4F073AC11FBA972F00B43DE1 /* README.md */,
+				4F13C2381FBAA8C500F77AD5 /* LICENSE */,
 			);
 			name = ...;
 			sourceTree = "<group>";
@@ -152,6 +164,7 @@
 				4F681F151FBA77A20010D00C /* Frameworks */,
 				4F681F161FBA77A20010D00C /* Headers */,
 				4F681F171FBA77A20010D00C /* Resources */,
+				4F073AC21FBA998400B43DE1 /* Run Script: SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -236,13 +249,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F073AC21FBA998400B43DE1 /* Run Script: SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4F681F141FBA77A20010D00C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F681F421FBA7AE40010D00C /* BooksService.swift in Sources */,
-				4F681F451FBA7C010010D00C /* Foundation+GoogleBooksClient.swift in Sources */,
+				4F073AC01FBA8F3200B43DE1 /* Parameters.swift in Sources */,
+				4F681F421FBA7AE40010D00C /* GoogleBooksAPI.swift in Sources */,
+				4F073ABC1FBA833000B43DE1 /* GoogleBooksProvider.swift in Sources */,
+				4F073ABE1FBA8BA500B43DE1 /* Volume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F681F281FBA77A20010D00C /* GoogleBooksClientTests.swift in Sources */,
+				4F681F281FBA77A20010D00C /* BooksClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +469,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJY6342X8W;
-				INFOPLIST_FILE = GoogleBooksClientTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.astrio.GoogleBooksClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,7 +484,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJY6342X8W;
-				INFOPLIST_FILE = GoogleBooksClientTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.astrio.GoogleBooksClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
