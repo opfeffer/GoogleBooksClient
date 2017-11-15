@@ -1,17 +1,11 @@
-//
-//  GoogleBooksAPI.swift
-//  GoogleBooksClient
-//
-//  Created by Oliver Pfeffer on 11/13/17.
-//  Copyright © 2017 Astrio, LLC. All rights reserved.
-//
-
 import Foundation
 import Moya
 
 internal enum GoogleBooksAPI {
 
     case search(query: String, projection: Projection, printTypes: PrintTypes, sorting: Sorting, startIndex: Int, maxResults: Int) // swiftlint:disable:this line_length
+
+    case volumeInfo(id: String)
 }
 
 extension GoogleBooksAPI: TargetType {
@@ -24,6 +18,8 @@ extension GoogleBooksAPI: TargetType {
         switch self {
         case .search:
             return "volumes"
+        case .volumeInfo(let id):
+            return "volumes/\(id)"
         }
     }
 
@@ -36,21 +32,31 @@ extension GoogleBooksAPI: TargetType {
     }
 
     public var task: Task {
-        switch self {
-        case .search(let params):
-            return .requestParameters(parameters: [
-                "q": params.query,
-                "projection": params.projection.rawValue,
-                "printType": params.printTypes.rawValue,
-                "orderBy": params.sorting.rawValue,
-                "startIndex": params.startIndex,
-                "maxResults": params.maxResults
-                ], encoding: URLEncoding.queryString)
+        if let params = parameters {
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
+
+        return .requestPlain
     }
 
     public var headers: [String: String]? {
         return nil
     }
 
+    public var parameters: [String: Any]? {
+        switch self {
+        case .search(let params):
+            return [
+                "q": params.query,
+                "projection": params.projection.rawValue,
+                "printType": params.printTypes.rawValue,
+                "orderBy": params.sorting.rawValue,
+                "startIndex": params.startIndex,
+                "maxResults": params.maxResults
+            ]
+
+        case .volumeInfo:
+            return nil
+        }
+    }
 }

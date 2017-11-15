@@ -1,11 +1,3 @@
-//
-//  BooksClientTests.swift
-//  GoogleBooksClientTests
-//
-//  Created by Oliver Pfeffer on 11/13/17.
-//  Copyright © 2017 Astrio, LLC. All rights reserved.
-//
-
 import XCTest
 @testable import GoogleBooksClient
 
