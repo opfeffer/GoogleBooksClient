@@ -1,1 +1,1 @@
-github "Moya/Moya"
+github "Moya/Moya" ~> 10.0

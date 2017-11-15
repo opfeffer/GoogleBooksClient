@@ -13,7 +13,7 @@ Currently unsupported: User-specific information via authenticated requests.
 ### To-Do List
 _(not ordered by priority or severity)_
 
-* [ ] Add Cocoapods support
+* [x] Add Cocoapods support
 * [ ] Add Swift Package Manager support
 * [ ] Add unit test coverage
 * [ ] Support reactive frameworks supported by Moya (RxSwift, ReactiveSwift)
@@ -27,10 +27,23 @@ _(not ordered by priority or severity)_
 * Xcode 9/Swift 4
 * [Moya](https://github.com/Moya/Moya)
 
+### Cocoapods
+
+```
+// Podfile
+
+target "YOURTARGETNAME" do
+  use_frameworks!
+
+  pod "GoogleBooksClient", :git => "https://github.com/opfeffer/GoogleBooksClient" # directly referencing Github until GA release
+end
+```
+
 ### Carthage
 
 ```
 // Cartfile
+
 github "opfeffer/GoogleBooksClient" "master"
 ```
 

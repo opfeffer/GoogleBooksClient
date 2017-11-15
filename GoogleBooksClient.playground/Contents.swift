@@ -16,4 +16,3 @@ let provider = GoogleBooksProvider(plugins: [NetworkLoggerPlugin()])
 //}
 
 provider.info(volumeId: "XV8XAAAAYAAJ") { print($0) }
-

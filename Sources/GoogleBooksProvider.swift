@@ -1,7 +1,6 @@
 import Moya
 import Result
 
-
 /// Pagination parameters; `maxResult` needs to be between 0...40.
 public typealias Pagination = (startIndex: Int, maxResults: Int)
 
