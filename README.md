@@ -14,10 +14,10 @@ Currently unsupported: User-specific information via authenticated requests.
 _(not ordered by priority or severity)_
 
 * [x] Add Cocoapods support
-* [ ] Add Swift Package Manager support
+* [x] Add Swift Package Manager support
 * [ ] Add unit test coverage
 * [ ] Support reactive frameworks supported by Moya (RxSwift, ReactiveSwift)
-* [ ] Increase documentation
+* [ ] Improve documentation
 * [ ] Add continuous integration (travis-ci? circleCI? buddybuild?)
 
 ## Installation
@@ -45,6 +45,14 @@ end
 // Cartfile
 
 github "opfeffer/GoogleBooksClient" "master"
+```
+
+### Swift Package Manager
+
+```swift
+// Package.swift
+
+.package(url: "https://github.com/opfeffer/GoogleBooksClient", .branch("master"))
 ```
 
 ## Usage

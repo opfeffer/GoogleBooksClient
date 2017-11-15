@@ -37,6 +37,7 @@
 		4F073AC31FBA99DD00B43DE1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4F13C2381FBAA8C500F77AD5 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4F1971131FBC833C00ECDE3B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1971151FBCC97A00ECDE3B /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4F681F191FBA77A20010D00C /* GoogleBooksClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleBooksClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F681F221FBA77A20010D00C /* GoogleBooksClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleBooksClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F681F271FBA77A20010D00C /* BooksClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksClientTests.swift; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 				4FFC64971FBC741100370FD9 /* Cartfile.resolved */,
 				4FFC64961FBC71B000370FD9 /* GoogleBooksClient.podspec */,
 				4F13C2381FBAA8C500F77AD5 /* LICENSE */,
+				4F1971151FBCC97A00ECDE3B /* Package.swift */,
 				4F073AC11FBA972F00B43DE1 /* README.md */,
 			);
 			name = ...;
