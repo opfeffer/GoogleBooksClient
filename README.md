@@ -29,7 +29,7 @@ _(not ordered by priority or severity)_
 
 ### Cocoapods
 
-```
+```ruby
 // Podfile
 
 target "YOURTARGETNAME" do

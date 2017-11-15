@@ -22,6 +22,7 @@ public struct GoogleBooksProvider {
     ///   - pagination: Pagination parameters
     ///   - completion: Closure called on request completion
     /// - Returns: `Cancellable` token to manage request progress.
+    @discardableResult
     public func search(query: String, projection: Projection = .lite, printTypes: PrintTypes = .all, sorting: Sorting = .relevance, pagination: Pagination = (0, 10), completion: @escaping (Result<VolumesList, MoyaError>) -> Void) -> Cancellable {
         let target = GoogleBooksAPI.search(query: query,
                                            projection: projection,
@@ -41,10 +42,10 @@ public struct GoogleBooksProvider {
                     completion(.success(list))
 
                 } catch {
-                    completion(.failure(MoyaError.jsonMapping(response)))
+                    let e = MoyaError.objectMapping(error, response)
+                    completion(.failure(e))
                 }
             }
-
         })
     }
 
@@ -54,6 +55,7 @@ public struct GoogleBooksProvider {
     ///   - volumeId: Volume ID
     ///   - completion: Closure called on request completion
     /// - Returns: `Cancellable` token to manage request progess.
+    @discardableResult
     public func info(volumeId: String, completion: @escaping (Result<Volume, MoyaError>) -> Void) -> Cancellable {
         return provider.request(.volumeInfo(id: volumeId), completion: { (result) in
             switch result {
@@ -65,7 +67,8 @@ public struct GoogleBooksProvider {
                     let volume = try response.map(Volume.self)
                     completion(.success(volume))
                 } catch {
-                    completion(.failure(MoyaError.jsonMapping(response)))
+                    let e = MoyaError.objectMapping(error, response)
+                    completion(.failure(e))
                 }
             }
         })
