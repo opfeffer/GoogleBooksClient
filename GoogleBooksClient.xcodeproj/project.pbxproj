@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F073ABC1FBA833000B43DE1 /* GoogleBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABB1FBA833000B43DE1 /* GoogleBooksProvider.swift */; };
+		4F073ABC1FBA833000B43DE1 /* GoogleBooksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABB1FBA833000B43DE1 /* GoogleBooksClient.swift */; };
 		4F073ABE1FBA8BA500B43DE1 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABD1FBA8BA500B43DE1 /* Volume.swift */; };
 		4F073AC01FBA8F3200B43DE1 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F073ABF1FBA8F3200B43DE1 /* Parameters.swift */; };
 		4F1971141FBC833C00ECDE3B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1971131FBC833C00ECDE3B /* Alamofire.framework */; };
 		4F681F231FBA77A20010D00C /* GoogleBooksClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F191FBA77A20010D00C /* GoogleBooksClient.framework */; };
-		4F681F281FBA77A20010D00C /* BooksClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F271FBA77A20010D00C /* BooksClientTests.swift */; };
+		4F681F281FBA77A20010D00C /* GoogleBooksClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F681F271FBA77A20010D00C /* GoogleBooksClientTests.swift */; };
 		4F681F361FBA77EF0010D00C /* GoogleBooksClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F681F341FBA77EF0010D00C /* GoogleBooksClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F681F3E1FBA7A1C0010D00C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F3B1FBA7A1C0010D00C /* Moya.framework */; };
 		4F681F401FBA7A1C0010D00C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F681F3D1FBA7A1C0010D00C /* Result.framework */; };
@@ -30,7 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F073ABB1FBA833000B43DE1 /* GoogleBooksProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksProvider.swift; sourceTree = "<group>"; };
+		4F073ABB1FBA833000B43DE1 /* GoogleBooksClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksClient.swift; sourceTree = "<group>"; };
 		4F073ABD1FBA8BA500B43DE1 /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
 		4F073ABF1FBA8F3200B43DE1 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		4F073AC11FBA972F00B43DE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		4F1971151FBCC97A00ECDE3B /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4F681F191FBA77A20010D00C /* GoogleBooksClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleBooksClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F681F221FBA77A20010D00C /* GoogleBooksClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleBooksClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F681F271FBA77A20010D00C /* BooksClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksClientTests.swift; sourceTree = "<group>"; };
+		4F681F271FBA77A20010D00C /* GoogleBooksClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksClientTests.swift; sourceTree = "<group>"; };
 		4F681F291FBA77A20010D00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F681F341FBA77EF0010D00C /* GoogleBooksClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleBooksClient.h; sourceTree = "<group>"; };
 		4F681F351FBA77EF0010D00C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		4F681F261FBA77A20010D00C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4F681F271FBA77A20010D00C /* BooksClientTests.swift */,
+				4F681F271FBA77A20010D00C /* GoogleBooksClientTests.swift */,
 				4F681F291FBA77A20010D00C /* Info.plist */,
 			);
 			path = Tests;
@@ -106,7 +106,7 @@
 		4F681F331FBA77EF0010D00C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4F073ABB1FBA833000B43DE1 /* GoogleBooksProvider.swift */,
+				4F073ABB1FBA833000B43DE1 /* GoogleBooksClient.swift */,
 				4F681F411FBA7AE40010D00C /* GoogleBooksAPI.swift */,
 				4F073ABF1FBA8F3200B43DE1 /* Parameters.swift */,
 				4F073ABD1FBA8BA500B43DE1 /* Volume.swift */,
@@ -279,7 +279,7 @@
 			files = (
 				4F073AC01FBA8F3200B43DE1 /* Parameters.swift in Sources */,
 				4F681F421FBA7AE40010D00C /* GoogleBooksAPI.swift in Sources */,
-				4F073ABC1FBA833000B43DE1 /* GoogleBooksProvider.swift in Sources */,
+				4F073ABC1FBA833000B43DE1 /* GoogleBooksClient.swift in Sources */,
 				4F073ABE1FBA8BA500B43DE1 /* Volume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F681F281FBA77A20010D00C /* BooksClientTests.swift in Sources */,
+				4F681F281FBA77A20010D00C /* GoogleBooksClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +334,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -394,7 +394,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

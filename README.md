@@ -22,9 +22,11 @@ _(not ordered by priority or severity)_
 
 ## Installation
 
-### Dependencies
+### Dependencies/Requirements
 
-* Xcode 9/Swift 4
+* Xcode 9+
+* Swift 4
+* iOS 10+
 * [Moya](https://github.com/Moya/Moya)
 
 ### Cocoapods
@@ -64,6 +66,6 @@ See `GoogleBooksClient.playground` for details.
 GoogleBooksClient is released under an MIT license. See [LICENSE](LICENSE) for more information.
 
 
-[badge-swift]: https://img.shields.io/badge/swift%20version-4.0-green.svg
-[badge-carthage]: https://img.shields.io/badge/compatible-carthage-brightgreen.svg
+[badge-swift]: https://img.shields.io/badge/swift%20version-4.0-brightgreen.svg
+[badge-carthage]: https://img.shields.io/badge/compatible-carthage%20%7C%20cocoapods%20%7C%20swift%20pm-brightgreen.svg
 [badge-platforms]: https://img.shields.io/badge/platforms-iOS-lightgrey.svg

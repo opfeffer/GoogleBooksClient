@@ -1,9 +1,11 @@
 Pod::Spec.new do |s|
-
   s.name         = "GoogleBooksClient"
-  s.version      = "0.1"
-  s.summary      = "A simple API Client for Google's Book API."
 
+  `xcodebuild -project GoogleBooksClient.xcodeproj -showBuildSettings` =~ /CURRENT_PROJECT_VERSION = ((\d\.)+\d)/
+  abort("No version detected") if $1.nil?
+  s.version = $1
+
+  s.summary      = "A simple API Client for Google's Book API."
   s.description  = <<-DESC
   Google Books is an effort to make book content more discoverable on the Web.
   GoogleBooksClient gives you access to book information in your Swift project. Search for books and display information about specific books.
@@ -18,6 +20,5 @@ Pod::Spec.new do |s|
   s.source_files = "Sources/**/*.swift"
 
   s.dependency "Moya", "~> 10.0"
-  s.dependency "Alamofire", "~> 4.5" # this shouldn't be necessary, should it?! getting Undefined Symbols errors without it :shrug:
-
+  s.dependency "Alamofire", "~> 4.5" # this shouldn't be necessary, should it?! getting Undefined Symbols errors without it :shrug:q
 end

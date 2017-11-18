@@ -5,6 +5,8 @@ public enum PrintType: String, Decodable {
     case magazine   = "MAGAZINE"
 }
 
+// MARK: -
+
 /// Google Books appears to return varying date formats in its `volumes` response.
 /// `PublishDate` attempts to standardize the formats and provide a single view of the data.
 public struct PublishDate {
@@ -97,14 +99,17 @@ public extension PublishDate {
     }
 }
 
+// MARK: -
+
 /// A Volume represents information that Google Books hosts about a book or a magazine.
 /// It contains metadata, such as title and author, as well as personalized data,
 /// such as whether or not it has been purchased.
 public struct Volume: Decodable {
+
     public let id: String
     public let etag: String
 
-    public let info: VolumeInfo
+    public let info: Info
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -112,55 +117,85 @@ public struct Volume: Decodable {
         case info = "volumeInfo"
     }
 
-    public struct VolumeInfo: Decodable {
+    public struct Info: Decodable {
 
         public let title: String
-        public let authors: [String]
+        public let authors: [String]?
 
-        public let description: String
+        public let description: String?
         public let pageCount: Int?
+        public let publisher: String?
         public let publishDate: PublishDate?
+        public let iso6391LanguageCode: String?
 
-        public let imageURLs: ImageURLs?
-        public let infoURL: URL
-        public let previewURL: URL
+        public let averageRating: Float?
+        public let ratingsCount: Int?
 
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-
-            title = try container.decode(String.self, forKey: .title)
-            authors = try container.decodeIfPresent([String].self, forKey: .authors) ?? []
-            description = try container.decodeIfPresent(String.self, forKey: .description) ?? NSLocalizedString("No description available", comment: "")
-            pageCount = try container.decodeIfPresent(Int.self, forKey: .pageCount)
-            publishDate = try container.decodeIfPresent(PublishDate.self, forKey: .publishDate)
-            imageURLs = try container.decodeIfPresent(ImageURLs.self, forKey: .imageURLs)
-            infoURL = try container.decode(URL.self, forKey: .infoURL)
-            previewURL = try container.decode(URL.self, forKey: .previewURL)
-        }
+        public let imageURLs: ImageURLs
+        public let infoURL: URL?
+        public let previewURL: URL?
 
         enum CodingKeys: String, CodingKey {
             case title
             case authors
             case description
             case pageCount
-            case publishDate    = "publishedDate"
-            case imageURLs      = "imageLinks"
-            case infoURL        = "infoLink"
-            case previewURL     = "previewLink"
+            case publisher
+            case publishDate         = "publishedDate"
+            case iso6391LanguageCode = "language"
+            case averageRating
+            case ratingsCount
+            case imageURLs           = "imageLinks"
+            case infoURL             = "infoLink"
+            case previewURL          = "previewLink"
         }
-
     }
 
     public struct ImageURLs: Decodable {
-        public let smallThumbnailURL: URL
-        public let thumbnailURL: URL
+        private let store: [String: URL?]
 
-        enum CodingKeys: String, CodingKey {
-            case smallThumbnailURL  = "smallThumbnail"
-            case thumbnailURL       = "thumbnail"
+        public init(from decoder: Decoder) throws {
+            store = try decoder.singleValueContainer().decode([String: URL?].self)
+        }
+
+        public subscript(size: ImageSize) -> URL? {
+            return store[size.rawValue] ?? nil
+        }
+
+        public func imageURL(targetSize: ImageSize, matching: Matching = .exact) -> URL? {
+
+            switch matching {
+            case .exact:
+                return self[targetSize]
+
+            case .best:
+                var sizes = ImageSize.orderedDesc
+                let index: Int = sizes.index(of: targetSize) ?? 0
+                sizes = Array(sizes[index..<sizes.count])
+
+                return sizes.flatMap { store[$0.rawValue] }.first ?? nil
+            }
+        }
+
+        public enum ImageSize: String {
+            case smallThumbnail
+            case thumbnail
+            case small
+            case medium
+            case large
+            case extraLarge
+
+            static let orderedDesc: [ImageSize] = [.extraLarge, .large, .medium, .small, .thumbnail, smallThumbnail]
+        }
+
+        public enum Matching {
+            case exact
+            case best
         }
     }
 }
+
+// MARK: -
 
 public struct VolumesList: Decodable {
 

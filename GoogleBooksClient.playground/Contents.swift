@@ -5,7 +5,8 @@ import GoogleBooksClient
 import Moya
 import Result
 
-let provider = GoogleBooksProvider(plugins: [NetworkLoggerPlugin()])
+let provider = MoyaProvider<GoogleBooksAPI>(plugins: [NetworkLoggerPlugin()])
+let client = GoogleBooksClient(provider: provider)
 
 //: Volumes
 //provider.search(query: "Moby Dick", printTypes: .books) { (result) in
@@ -15,4 +16,10 @@ let provider = GoogleBooksProvider(plugins: [NetworkLoggerPlugin()])
 //    list.items.forEach { print($0.id) }
 //}
 
-provider.info(volumeId: "XV8XAAAAYAAJ") { print($0) }
+client.info(volumeId: "2DotAQAAMAAJ") {
+    defer { PlaygroundPage.current.finishExecution() }
+    guard case Result.success(let volume) = $0 else { return }
+
+    print(volume.info.imageURLs[.medium])
+    print(volume.info.imageURLs.imageURL(targetSize: .medium, matching: .best))
+}
