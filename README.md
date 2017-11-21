@@ -1,6 +1,6 @@
 #  GoogleBooksClient
 
-![badge-swift] ![badge-carthage] ![badge-platforms]
+![badge-swift] ![badge-carthage] ![badge-platforms] [![badge-build]](https://dashboard.buddybuild.com/apps/5a0caaa971247500015f982a/build/latest)
 
 Simple API wrapper for [Google's Books API](https://developers.google.com/books/) written in Swift.
 
@@ -78,7 +78,7 @@ Xcode Playgrounds are a great way to prototype and test functionality without ha
 
 GoogleBooksClient is released under an MIT license. See [LICENSE](LICENSE) for more information.
 
-
 [badge-swift]: https://img.shields.io/badge/swift%20version-4.0-brightgreen.svg
 [badge-carthage]: https://img.shields.io/badge/compatible-carthage%20%7C%20cocoapods%20%7C%20swift%20pm-brightgreen.svg
 [badge-platforms]: https://img.shields.io/badge/platforms-iOS-lightgrey.svg
+[badge-build]: http://buddybuild-shields-opfeffer.7e14.starter-us-west-2.openshiftapps.com/projects/5a0caaa971247500015f982a/badge
