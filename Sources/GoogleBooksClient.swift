@@ -1,15 +1,30 @@
 import Moya
 import Result
 
-/// Pagination parameters; `maxResult` needs to be between 0...40.
-public typealias Pagination = (startIndex: Int, maxResults: Int)
+/// API Client object. Provides a typed interface to Google's Book API.
+public class GoogleBooksClient: MoyaProvider<GoogleBooksAPI> {
 
-public struct GoogleBooksClient {
+    /// Pagination parameters; `maxResult` needs to be between 0...40.
+    public typealias Pagination = (startIndex: Int, maxResults: Int)
 
-    let provider: MoyaProvider<GoogleBooksAPI>
+    /// Initializes a provider.
+    ///
+    /// - Parameters:
+    ///   - apiKey: API key for Google API (defaults to `.infoDictionary`).
+    ///   - stubClosure: Moya's mechanism to support request stubbing (defaults to `.neverStub`).
+    ///   - plugins: Exposing Moya's plugin architecture.
+    public required init(apiKey: APIKeySource = .infoDictionary, stubClosure: @escaping StubClosure = MoyaProvider.neverStub, plugins: [PluginType] = []) {
+        var plugins = plugins
+        let apiKeyPlugin = APIKeyPlugin(key: apiKey.value)
+        plugins.append(apiKeyPlugin)
 
-    public init(provider: MoyaProvider<GoogleBooksAPI> = .init()) {
-        self.provider = provider
+        super.init(endpointClosure: MoyaProvider.defaultEndpointMapping,
+                   requestClosure: MoyaProvider.defaultRequestMapping,
+                   stubClosure: stubClosure,
+                   callbackQueue: nil,
+                   manager: MoyaProvider<Target>.defaultAlamofireManager(),
+                   plugins: plugins,
+                   trackInflights: false)
     }
 
     /// Performs a volume search.
@@ -31,7 +46,7 @@ public struct GoogleBooksClient {
                                            startIndex: pagination.startIndex,
                                            maxResults: pagination.maxResults)
 
-        return provider.request(target, completion: { (result) in
+        return request(target, completion: { (result) in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -57,7 +72,7 @@ public struct GoogleBooksClient {
     /// - Returns: `Cancellable` token to manage request progess.
     @discardableResult
     public func info(volumeId: String, completion: @escaping (Result<Volume, MoyaError>) -> Void) -> Cancellable {
-        return provider.request(.volumeInfo(id: volumeId), completion: { (result) in
+        return request(.volumeInfo(id: volumeId), completion: { (result) in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -74,4 +89,68 @@ public struct GoogleBooksClient {
         })
     }
 
+}
+
+// MARK: -
+
+public extension GoogleBooksClient {
+
+    enum APIKeySource {
+
+        case explicit(String)
+
+        case infoDictionary
+    }
+
+}
+
+extension GoogleBooksClient.APIKeySource {
+
+    var value: String {
+        switch self {
+
+        case .explicit(let key):
+            return key
+
+        case .infoDictionary:
+            let key = Bundle.main.infoDictionary?["GoogleBooksClientAPIKey"] as? String
+            assert(key != nil, "Please specify a Google API key in your Info.plist (key=`GoogleBooksClientAPIKey`).")
+
+            return key ?? ""
+        }
+    }
+}
+
+// MARK: -
+
+internal struct APIKeyPlugin: PluginType {
+    let key: String
+
+    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+        guard let url = request.url,
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            else { return request }
+
+        let queryItem = URLQueryItem(name: "key", value: key)
+        let queryItems = components.queryItems ?? []
+        components.queryItems = queryItems + [queryItem]
+
+        var request = request
+        request.url = components.url ?? request.url
+
+        var identifier = Bundle.main.bundleIdentifier ?? "GoogleBooksClient"
+
+        // Bundle Identifiers for Xcode-generated playground projects include randomly generated
+        // Simulator UUIDs, for simplicity, we strip those off
+        if identifier.hasPrefix("com.apple.dt.playground") {
+            identifier = "com.apple.dt.playground"
+        }
+
+        // see:
+        // https://github.com/GoogleCloudPlatform/cloud-vision/issues/16
+        // https://groups.google.com/forum/#!topic/google-cloud-endpoints/I-u3sAUU3Ts
+        request.addValue(identifier, forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+
+        return request
+    }
 }

@@ -10,8 +10,7 @@ class GoogleBooksClientTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let provider = MoyaProvider<GoogleBooksAPI>(stubClosure: MoyaProvider.immediatelyStub)
-        client = GoogleBooksClient(provider: provider)
+        client = GoogleBooksClient(apiKey: .explicit(""), stubClosure: MoyaProvider.immediatelyStub)
     }
 
     override func tearDown() {

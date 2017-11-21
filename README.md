@@ -13,12 +13,12 @@ Currently unsupported: User-specific information via authenticated requests.
 ### To-Do List
 _(not ordered by priority or severity)_
 
-* [x] Add Cocoapods support
-* [x] Add Swift Package Manager support
 * [ ] Add unit test coverage
 * [ ] Support reactive frameworks supported by Moya (RxSwift, ReactiveSwift)
 * [ ] Improve documentation
-* [ ] Add continuous integration (travis-ci? circleCI? buddybuild?)
+* [x] Add continuous integration (travis-ci? circleCI? **buddybuild**?)
+* [x] Add Cocoapods support
+* [x] Add Swift Package Manager support
 
 ## Installation
 
@@ -28,6 +28,15 @@ _(not ordered by priority or severity)_
 * Swift 4
 * iOS 10+
 * [Moya](https://github.com/Moya/Moya)
+
+### API key
+
+Get your Google API Key from [Google's Developer Console](https://console.developers.google.com). There's two ways of providing your API key to GoogleBooksClient:
+
+1. Explicitly when instantiating `GoogleBooksClient(apiKey: .explicit("YOUR-API-KEY-HERE")`
+2. Implicitly via your `Info.plist` entry called `GoogleBooksClientAPIKey`.
+
+*Note: GoogleBooksClient will work for most requests without API key. However, Google's Terms of Service require the use of an API key and/or access token and failure to provide an API key makes your application subject to more aggressive rate limiting!*
 
 ### Cocoapods
 
@@ -60,6 +69,10 @@ github "opfeffer/GoogleBooksClient" "master"
 ## Usage
 
 See `GoogleBooksClient.playground` for details.
+
+### A note on Playground Support
+
+Xcode Playgrounds are a great way to prototype and test functionality without having to constantly re-run your application. It also allows standalone execution of a library/framework. Please note, should your [API key](#api-key) be application-restricted to iOS applications only, you will want to add `com.apple.dt.playground` as a valid bundle identifier in Google's developer console.
 
 ## License
 
