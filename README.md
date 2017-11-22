@@ -81,4 +81,4 @@ GoogleBooksClient is released under an MIT license. See [LICENSE](LICENSE) for m
 [badge-swift]: https://img.shields.io/badge/swift%20version-4.0-brightgreen.svg
 [badge-carthage]: https://img.shields.io/badge/compatible-carthage%20%7C%20cocoapods%20%7C%20swift%20pm-brightgreen.svg
 [badge-platforms]: https://img.shields.io/badge/platforms-iOS-lightgrey.svg
-[badge-build]: http://buddybuild-shields-opfeffer.7e14.starter-us-west-2.openshiftapps.com/projects/5a0caaa971247500015f982a/badge
+[badge-build]: http://builds.opfeffer.com/projects/5a0caaa971247500015f982a/badge
