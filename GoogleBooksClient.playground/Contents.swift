@@ -11,9 +11,8 @@ let client = GoogleBooksClient(apiKey: .explicit(key), plugins: [NetworkLoggerPl
 
 //: Volumes
 
-client.search(query: "Harry o", printTypes: .books) { (result) in
+client.search(query: "type a ", printTypes: .books) { (result) in
     defer { PlaygroundPage.current.finishExecution() }
-    print(result)
     guard case Result.success(let list) = result else { return }
 
     print(list)

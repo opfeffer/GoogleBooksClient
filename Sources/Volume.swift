@@ -131,9 +131,33 @@ public struct Volume: Decodable {
         public let averageRating: Float?
         public let ratingsCount: Int?
 
-        public let imageURLs: ImageURLs
+        public let imageURLs: ImageURLs?
         public let infoURL: URL?
         public let previewURL: URL?
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            title = try container.decode(String.self, forKey: .title)
+            authors = try container.decodeIfPresent([String].self, forKey: .authors)
+
+            description = try container.decodeIfPresent(String.self, forKey: .description)
+            pageCount = try container.decodeIfPresent(Int.self, forKey: .pageCount)
+            publisher = try container.decodeIfPresent(String.self, forKey: .publisher)
+
+            // sadly, this line requires a custom implementation of the Decodable initializer:
+            // GBS returns stuff like "19??" as `publishedDate`...
+            let date = try? container.decodeIfPresent(PublishDate.self, forKey: .publishDate)
+            publishDate = date ?? nil
+
+            iso6391LanguageCode = try container.decodeIfPresent(String.self, forKey: .iso6391LanguageCode)
+            averageRating = try container.decodeIfPresent(Float.self, forKey: .averageRating)
+            ratingsCount = try container.decodeIfPresent(Int.self, forKey: .ratingsCount)
+
+            imageURLs = try container.decodeIfPresent(ImageURLs.self, forKey: .imageURLs)
+            infoURL = try container.decodeIfPresent(URL.self, forKey: .infoURL)
+            previewURL = try container.decodeIfPresent(URL.self, forKey: .previewURL)
+        }
 
         enum CodingKeys: String, CodingKey {
             case title
@@ -163,7 +187,6 @@ public struct Volume: Decodable {
         }
 
         public func imageURL(targetSize: ImageSize, matching: Matching = .exact) -> URL? {
-
             switch matching {
             case .exact:
                 return self[targetSize]
